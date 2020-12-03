@@ -43,3 +43,31 @@ Sudo make
 test finished...
 
 
+4) install and build go env
+wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+sudo tar -xzf go1.15.5.linux-amd64.tar.gz -C /usr/bin
+
+vi /etc/profile
+
+export GOPATH=/goWorkPlace                                                                                   export GOROOT=/usr/bin/go                                                                                     export PATH=$PATH:$GOROOT/bin
+
+source /etc/profile
+
+
+test: go version
+
+5) install geth env
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+
+git clone https://github.com/ethereum/go-ethereum.git
+cd go-ethereum
+make geth
+
+test 
+>>> geth version
+
+2, build the geth cluster
+
+
