@@ -8,6 +8,9 @@ root-server
 start init the server:
 IP 169.59.166.16
  >>> ssh -i C:\Users\zhang\.ssh\id_rsa_1 root@169.59.166.16
+ 
+ friend01 169.59.161.251
+ ssh -i C:\Users\zhang\.ssh\id_rsa_1 root@169.59.161.251
 
 1) init the env
 sudo apt-get update
@@ -79,6 +82,18 @@ geth --datadir /root/eth/data0/ init genesis.json
 geth --datadir /root/eth/data0/ \
 --networkid 45 \
 --identity "rootnode" \
+--port 30303 \
+--rpc \
+--rpcport 8545 \
+--rpccorsdomain "*" \
+--nodiscover \
+--verbosity 4 \
+console 2>> eth.log
+
+
+geth --datadir /root/eth/data0/ \
+--networkid 45 \
+--identity "friend01" \
 --port 30303 \
 --rpc \
 --rpcport 8545 \
