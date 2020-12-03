@@ -69,5 +69,20 @@ test
 >>> geth version
 
 2, build the geth cluster
+git clone https://github.com/siriuswatch/advancednetworkingproject.git
 
+1) init the first block
+geth --datadir /root/eth/data0/ init genesis.json
 
+2) start the first block
+
+geth --datadir /root/eth/data0/ \
+--networkid 45 \
+--identity "rootnode" \
+--port 30303 \
+--rpc \
+--rpcport 8545 \
+--rpccorsdomain "*" \
+--nodiscover \
+--verbosity 4 \
+console 2>> eth.log
