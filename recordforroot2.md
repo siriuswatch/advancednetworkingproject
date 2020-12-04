@@ -87,9 +87,9 @@ geth --datadir /root/eth/data0/ \
 --rpcport 8545 \
 --rpccorsdomain "*" \
 --nodiscover \
+--allow-insecure-unlock \
 --verbosity 4 \
 console 2>> eth.log
-
 
 geth --datadir /root/eth/data0/ \
 --networkid 45 \
@@ -99,5 +99,15 @@ geth --datadir /root/eth/data0/ \
 --rpcport 8545 \
 --rpccorsdomain "*" \
 --nodiscover \
+--allow-insecure-unlock \
 --verbosity 4 \
 console 2>> eth.log
+
+3) The agreement:
+
+var bytecode = "0x60806040526000805534801561001457600080fd5b5061015a806100246000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c8063188b85b41461005157806360fe47b1146100935780636d4ce63c146100c1578063f446c1d0146100df575b600080fd5b61007d6004803603602081101561006757600080fd5b81019080803590602001909291905050506100fd565b6040518082815260200191505060405180910390f35b6100bf600480360360208110156100a957600080fd5b810190808035906020019092919050505061010b565b005b6100c9610115565b6040518082815260200191505060405180910390f35b6100e761011e565b6040518082815260200191505060405180910390f35b600081600054019050919050565b8060008190555050565b60008054905090565b6000548156fea2646970667358221220f01bbfb0dfc6584cd14d7a303b00244721619619d07bacb960d496128c20b0ea64736f6c63430007040033"
+
+var abi = JSON.parse('[{\"inputs\":[],\"name\":\"A\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"a\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"b\",\"type\":\"uint256\"}],\"name\":\"sum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]')
+
+test = web3.eth.contract(abi)
+
